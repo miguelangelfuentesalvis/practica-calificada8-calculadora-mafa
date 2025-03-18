@@ -12,16 +12,16 @@ const productos = [
   { nombre: "Tablet", precio: 500 },
 ];
 
-const resultados = document.getElementById("resultados");
-const listaProductos = document.getElementById("listaProductos");
+const resultados = document.querySelector("#resultados");
+const listaProductos = document.querySelector("#listaProductos");
 
-const btnVerificar = document.getElementById("btnVerificar");
-const btnMostrar = document.getElementById("btnMostrar");
-const btnDescuento = document.getElementById("btnDescuento");
-const btnFiltrar = document.getElementById("btnFiltrar");
-const btnPrimeros = document.getElementById("btnPrimeros");
-const btnOrdenar = document.getElementById("btnOrdenar");
-const btnInvertir = document.getElementById("btnInvertir");
+const btnVerificar = document.querySelector("#btnVerificar");
+const btnMostrar = document.querySelector("#btnMostrar");
+const btnDescuento = document.querySelector("#btnDescuento");
+const btnFiltrar = document.querySelector("#btnFiltrar");
+const btnPrimeros = document.querySelector("#btnPrimeros");
+const btnOrdenar = document.querySelector("#btnOrdenar");
+const btnInvertir = document.querySelector("#btnInvertir");
 
 // FUNCIONES
 
@@ -73,7 +73,7 @@ function verificarDisponibilidad() {
   resultados.innerHTML = `
       <div class="p-4 bg-gray-100 rounded-md border">
           <h3 class="font-semibold">¿"${productoBuscado}" está disponible?</h3>
-          <p>${disponible ? "✅ Sí" : "❌ No"}</p>
+          <p>${disponible ? "Sí" : "No"}</p>
       </div>
   `;
 }
@@ -142,7 +142,6 @@ function asignarEventos() {
 }
 
 // INICIALIZACIÓN
-
 document.addEventListener("DOMContentLoaded", () => {
   cargarListaProductos();
   asignarEventos();
