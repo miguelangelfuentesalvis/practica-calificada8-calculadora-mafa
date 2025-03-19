@@ -74,3 +74,7 @@ botones.forEach(boton => {
     });
 });
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 6aafdb45d05a6a237b536ea554ccfd91acdf8d03
