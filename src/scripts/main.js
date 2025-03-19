@@ -1,4 +1,4 @@
-const pantalla = document.querySelectorAll('#pantalla')[0];
+const pantalla = document.querySelector('#pantalla');
 const botones = document.querySelectorAll('.btn');
 
 let entradaActual = '';
