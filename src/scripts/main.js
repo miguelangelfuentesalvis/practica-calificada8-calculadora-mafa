@@ -1,4 +1,4 @@
-const pantalla = document.querySelector('#pantalla');
+const pantalla = document.querySelectorAll('#pantalla')[0];
 const botones = document.querySelectorAll('.btn');
 
 let entradaActual = '';
@@ -11,6 +11,12 @@ function actualizarPantalla(valor) {
 botones.forEach(boton => {
     boton.addEventListener('click', () => {
         const valor = boton.textContent;
+        const operadores = {
+            'sumar': '+',
+            'restar': '-',
+            'multiplicar': '*',
+            'dividir': '/'
+        };
 
         if (boton.id === 'limpiar') {
             entradaActual = '';
@@ -38,14 +44,13 @@ botones.forEach(boton => {
                 expresion = '';
             }
         } else if (['sumar', 'restar', 'multiplicar', 'dividir'].includes(boton.id)) {
-            const operadores = {
-                'sumar': '+',
-                'restar': '-',
-                'multiplicar': '*',
-                'dividir': '/'
-            };
             const simboloOperador = operadores[boton.id];
-            expresion += ` ${simboloOperador} `;
+
+            if (!expresion || /[\+\-\*/]$/.test(expresion)) {
+                expresion = expresion.slice(0, -3) + ` ${simboloOperador} `;
+            } else {
+                expresion += ` ${simboloOperador} `;
+            }
             entradaActual = '';
             actualizarPantalla(expresion);
         } else {
