@@ -1,4 +1,4 @@
-const pantalla = document.querySelectorAll('#pantalla')[0];
+const pantalla = document.querySelector('#pantalla');
 const botones = document.querySelectorAll('.btn');
 
 let entradaActual = '';
@@ -35,7 +35,7 @@ botones.forEach(boton => {
         } else if (boton.id === 'igual') {
             try {
                 const resultado = eval(expresion);
-                actualizarPantalla(`${expresion} = ${resultado}`);
+                actualizarPantalla(`${resultado}`);
                 entradaActual = resultado.toString();
                 expresion = resultado.toString();
             } catch (error) {
@@ -46,11 +46,11 @@ botones.forEach(boton => {
         } else if (['sumar', 'restar', 'multiplicar', 'dividir'].includes(boton.id)) {
             const simboloOperador = operadores[boton.id];
 
-            if (!expresion || /[\+\-\*/]$/.test(expresion)) {
-                expresion = expresion.slice(0, -3) + ` ${simboloOperador} `;
-            } else {
-                expresion += ` ${simboloOperador} `;
+            if (expresion === '' || /[\+\-\*/]$/.test(expresion)) {
+                return;
             }
+
+            expresion += ` ${simboloOperador} `;
             entradaActual = '';
             actualizarPantalla(expresion);
         } else {
@@ -60,3 +60,4 @@ botones.forEach(boton => {
         }
     });
 });
+
